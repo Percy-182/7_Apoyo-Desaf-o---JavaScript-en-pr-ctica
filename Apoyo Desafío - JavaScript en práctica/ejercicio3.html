@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 3</title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <h2>Resultado: <span class="resultado"></span></h2>
+        <div>
+          <div>
+            <div>
+              <label for="">Valor 1</label>
+              <input id="valor1" type="text" />
+            </div>
+            <div>
+              <label for="">Valor 2</label>
+              <input id="valor2" type="text" />
+            </div>
+            <div style="display: flex">
+              <button id="btn-sumar" type="button">Sumar</button>
+              <button id="btn-restar" type="button">Restar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Escríbe aquí tu código
+      // Seleccionar los elementos necesarios del DOM
+      var btnSumar = document.getElementById("btn-sumar");
+      var btnRestar = document.getElementById("btn-restar");
+      var resultadoElement = document.querySelector(".resultado");
+      var valor1Input = document.getElementById("valor1");
+      var valor2Input = document.getElementById("valor2");
+
+      // Función para sumar
+      btnSumar.addEventListener("click", function () {
+        // Obtener los valores de los campos de entrada y convertirlos a números
+        var valor1 = parseFloat(valor1Input.value) || 0; // Si el valor no es un número válido, se establece a 0
+        var valor2 = parseFloat(valor2Input.value) || 0; // Si el valor no es un número válido, se establece a 0
+        var resultado = valor1 + valor2; // Calcular la suma
+        resultadoElement.textContent = resultado; // Mostrar el resultado en el elemento con la clase "resultado"
+      });
+
+      // Función para restar
+      btnRestar.addEventListener("click", function () {
+        // Obtener los valores de los campos de entrada y convertirlos a números
+        var valor1 = parseFloat(valor1Input.value) || 0; // Si el valor no es un número válido, se establece a 0
+        var valor2 = parseFloat(valor2Input.value) || 0; // Si el valor no es un número válido, se establece a 0
+        var resultado = valor1 - valor2; // Calcular la resta
+        // Si el resultado es negativo, establecerlo a 0
+        if (resultado < 0) {
+          resultado = 0;
+        }
+        resultadoElement.textContent = resultado; // Mostrar el resultado en el elemento con la clase "resultado"
+      });
+    </script>
+  </body>
+</html>

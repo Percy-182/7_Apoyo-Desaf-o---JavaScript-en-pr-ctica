@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 1</title>
+  </head>
+
+  <body>
+    <div>
+      <div style="width: 40%; margin: 0 auto">
+        <h2>Escríbenos !!!</h2>
+        <div class="resultado" style="color: green; font-style: italic"></div>
+        <form id="formulario">
+          <div>
+            <div style="display: flex; flex-direction: column">
+              <label> Nombre completo </label>
+              <input id="nombre" type="text" />
+              <p class="errorNombre" style="color: red; font-style: italic"></p>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <label> Asunto </label>
+              <input id="asunto" type="text" />
+              <p class="errorAsunto" style="color: red; font-style: italic"></p>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <label> Mensaje </label>
+            <textarea id="mensaje"></textarea>
+            <p class="errorMensaje" style="color: red; font-style: italic"></p>
+          </div>
+          <div>
+            <button id="botton" type="submit">Envíar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Escríbe aquí tu código
+      var formulario = document.getElementById("formulario");
+      formulario.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+
+        // Obtener los valores de los campos del formulario
+        var nombre = document.getElementById("nombre").value.trim();
+        var asunto = document.getElementById("asunto").value.trim();
+        var mensaje = document.getElementById("mensaje").value.trim();
+
+        // Expresión regular para validar solo caracteres alfabéticos de la "a" hasta la "z"
+        var regex = /^[a-zA-Z]+$/;
+
+        // Validar nombre
+        if (!regex.test(nombre)) {
+          document.querySelector(".errorNombre").textContent =
+            "Error: Ingresa solo caracteres alfabéticos";
+          return;
+        } else {
+          document.querySelector(".errorNombre").textContent = "";
+        }
+
+        // Validar asunto
+        if (!regex.test(asunto)) {
+          document.querySelector(".errorAsunto").textContent =
+            "Error: Ingresa solo caracteres alfabéticos";
+          return;
+        } else {
+          document.querySelector(".errorAsunto").textContent = "";
+        }
+
+        // Validar mensaje
+        if (!regex.test(mensaje)) {
+          document.querySelector(".errorMensaje").textContent =
+            "Error: Ingresa solo caracteres alfabéticos";
+          return;
+        } else {
+          document.querySelector(".errorMensaje").textContent = "";
+        }
+        // Si todos los campos son válidos, mostrar mensaje de éxito
+        document.querySelector(".resultado").textContent =
+          "Mensaje enviado con éxito!";
+      });
+    </script>
+  </body>
+</html>
